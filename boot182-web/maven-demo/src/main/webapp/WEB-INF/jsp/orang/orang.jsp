@@ -1,5 +1,5 @@
 <%
-	request.setAttribute("contextName", request.getServletContext().getContextPath());
+	request.setAttribute("namaKonteks", request.getServletContext().getContextPath());
 %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ page isELIgnored="false"%>
@@ -8,19 +8,19 @@
 <meta charset="ISO-8859-1">
 <title>Orang</title>
 <!-- Bootstrap Core CSS -->
-<link href="${contextName}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${namaKonteks}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="${contextName}/assets/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+<link href="${namaKonteks}/assets/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="${contextName}/assets/dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="${namaKonteks}/assets/dist/css/sb-admin-2.css" rel="stylesheet">
 
 <!-- Morris Charts CSS -->
-<link href="${contextName}/assets/vendor/morrisjs/morris.css" rel="stylesheet">
+<link href="${namaKonteks}/assets/vendor/morrisjs/morris.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="${contextName}/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="${namaKonteks}/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div id="wrapper">
@@ -386,21 +386,21 @@
     <!-- /#wrapper -->
     
     <!-- jQuery -->
-    <script src="${contextName}/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="${namaKonteks}/assets/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="${contextName}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${namaKonteks}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="${contextName}/assets/vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="${namaKonteks}/assets/vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="${contextName}/assets/vendor/raphael/raphael.min.js"></script>
-    <script src="${contextName}/assets/vendor/morrisjs/morris.min.js"></script>
-    <script src="${contextName}/assets/data/morris-data.js"></script>
+    <script src="${namaKonteks}/assets/vendor/raphael/raphael.min.js"></script>
+    <script src="${namaKonteks}/assets/vendor/morrisjs/morris.min.js"></script>
+    <script src="${namaKonteks}/assets/data/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="${contextName}/assets/dist/js/sb-admin-2.js"></script>
+    <script src="${namaKonteks}/assets/dist/js/sb-admin-2.js"></script>
 
 </body>
 </html>
