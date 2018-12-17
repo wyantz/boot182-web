@@ -24,8 +24,7 @@
 		</property>
 	</bean>
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
@@ -34,8 +33,7 @@
 	</bean>
 
 	<!-- session factory hibernate -->
-	<bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
-		id="sessionFactory">
+	<bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" id="sessionFactory">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="annotatedClasses">
 			<list>

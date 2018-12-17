@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 public class Orang {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	
 	@Column(name="ORGNM", length=50)
 	private String nama;
@@ -39,10 +39,10 @@ public class Orang {
 		System.out.println("Orang : Constructor is called");
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}	
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNama() {
