@@ -8,4 +8,7 @@ public interface OrangService {
 	public List<Orang> getList();
 	
 	public Orang getData(int id);
+	public void insert(Orang orang);
+	public void delete(Orang orang);
+	public void update(Orang orang);
 }

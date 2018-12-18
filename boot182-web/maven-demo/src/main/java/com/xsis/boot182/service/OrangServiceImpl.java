@@ -25,4 +25,19 @@ public class OrangServiceImpl implements OrangService {
 		return this.orangDao.get(id);
 	}
 
+	@Override
+	public void insert(Orang orang) {
+		this.orangDao.insert(orang);
+	}
+
+	@Override
+	public void delete(Orang orang) {
+		this.orangDao.delete(orang);
+	}
+
+	@Override
+	public void update(Orang orang) {
+		this.orangDao.update(orang);
+	}
+
 }
