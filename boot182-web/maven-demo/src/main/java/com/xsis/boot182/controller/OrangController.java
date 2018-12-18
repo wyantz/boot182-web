@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,9 +59,51 @@ public class OrangController {
 			List<Orang> list = this.orangService.getList();
 			result = new ResponseEntity<List<Orang>>(list, HttpStatus.OK);
 		} catch (Exception e) {
-			log.debug(e.getMessage(), e);
+			log.error(e.getMessage(), e);
 			result = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return result;
+	}
+	
+	@RequestMapping(value="/orang/{idnyaorang}", method=RequestMethod.GET)
+	public ResponseEntity<Orang> get(@PathVariable(name="idnyaorang") Integer id) {
+		ResponseEntity<Orang> result = null;
+		try {
+			Orang orang = this.orangService.getData(id);
+			result = new ResponseEntity<Orang>(orang, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			result = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return result;
+	}
+	
+	@RequestMapping(value="/orang/", method=RequestMethod.PUT)
+	public ResponseEntity<Orang> update(@RequestBody Orang orang) {
+		ResponseEntity<Orang> result = null;
+		try {
+			this.orangService.update(orang);
+			result = new ResponseEntity<Orang>(orang, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			result = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return result;		
+	}
+
+	@RequestMapping(value="/orang/{idnyaorang}", method=RequestMethod.DELETE)
+	public ResponseEntity<Orang> hapus(@PathVariable(name="idnyaorang") Integer id) {
+		try {
+			Orang orang = this.orangService.getData(id);
+			if (orang!=null) {
+				this.orangService.delete(orang);
+				return new ResponseEntity<Orang>(HttpStatus.OK);
+			} else {
+				return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);				
+			}
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }
