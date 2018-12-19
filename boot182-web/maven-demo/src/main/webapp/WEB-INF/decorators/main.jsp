@@ -9,6 +9,10 @@
 <head>
 <meta charset="ISO-8859-1">
 	<title>Orang - <decorator:title/></title>
+    <!-- jQuery -->
+    <script src="${namaKonteks}/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="${namaKonteks}/assets/js/default.js"></script>
+
 	<!-- Bootstrap Core CSS -->
 	<link href="${namaKonteks}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
@@ -24,7 +28,11 @@
 	<!-- Custom Fonts -->
 	<link href="${namaKonteks}/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	
+	<script>
+		var namaKonteks = '${namaKonteks}';
+	</script>
 	<decorator:head/>
+	
 </head>
 <body>
     <div id="wrapper">
@@ -365,8 +373,6 @@
     </div>
     <!-- /#wrapper -->
     
-    <!-- jQuery -->
-    <script src="${namaKonteks}/assets/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${namaKonteks}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -377,7 +383,10 @@
     <!-- Morris Charts JavaScript -->
     <script src="${namaKonteks}/assets/vendor/raphael/raphael.min.js"></script>
     <script src="${namaKonteks}/assets/vendor/morrisjs/morris.min.js"></script>
+    
+    <!-- 
     <script src="${namaKonteks}/assets/data/morris-data.js"></script>
+    -->
 
     <!-- Custom Theme JavaScript -->
     <script src="${namaKonteks}/assets/dist/js/sb-admin-2.js"></script>

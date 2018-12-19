@@ -1,12 +1,6 @@
 package com.xsis.boot182.controller;
 
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
-import javax.xml.ws.Response;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,17 +9,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.xsis.boot182.model.Orang;
 import com.xsis.boot182.service.OrangService;
 
-@RestController
+@Controller
 public class OrangController {
 	private Log log = LogFactory.getLog(getClass());
 	
@@ -34,8 +26,6 @@ public class OrangController {
 	
 	@RequestMapping("/orang.html")
 	public String orang(Model model) {
-		List<Orang> orangList = this.orangService.getList();
-		model.addAttribute("budiList", orangList);
 		return "orang/orang";
 	}
 	
@@ -64,7 +54,21 @@ public class OrangController {
 		}
 		return result;
 	}
-	
+
+	@RequestMapping(value="/orang/abc/{namayangdicari}", method=RequestMethod.GET)
+	public ResponseEntity<List<Orang>> getByNama(@PathVariable("namayangdicari") String nama) {
+		log.debug("Pencarian by nama");
+		ResponseEntity<List<Orang>> result = null;
+		try {
+			List<Orang> list = this.orangService.getList();
+			result = new ResponseEntity<List<Orang>>(list, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			result = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return result;
+	}
+
 	@RequestMapping(value="/orang/{idnyaorang}", method=RequestMethod.GET)
 	public ResponseEntity<Orang> get(@PathVariable(name="idnyaorang") Integer id) {
 		ResponseEntity<Orang> result = null;
