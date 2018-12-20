@@ -59,9 +59,10 @@
                         <li>
                             <a href="#">
                                 <div>
-                                	<sec:authorize access="isAuthenticated()">
-										<strong><sec:authentication property="principal.username"/></strong>
-									</sec:authorize>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
                                 </div>
                                 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                             </a>
@@ -250,11 +251,8 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                       	<sec:authorize access="isAuthenticated()">
-                       		<li>
-								<a href="${namaKonteks}/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-							</li>
-						</sec:authorize>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>

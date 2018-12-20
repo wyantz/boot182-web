@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="T_ORANG")
 public class Orang {
@@ -28,6 +30,7 @@ public class Orang {
 	@Column(name="ORGJK", length=1)
 	private String jk;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name="ORGDOB")
 	private Date tglLahir;

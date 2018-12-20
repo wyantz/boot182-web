@@ -18,6 +18,7 @@ import com.xsis.boot182.model.Orang;
 import com.xsis.boot182.service.OrangService;
 
 @Controller
+@RequestMapping("/api")
 public class OrangController {
 	private Log log = LogFactory.getLog(getClass());
 	
