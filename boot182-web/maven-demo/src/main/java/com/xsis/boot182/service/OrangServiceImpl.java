@@ -6,14 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.xsis.boot182.dao.AnakDao;
 import com.xsis.boot182.dao.OrangDao;
+import com.xsis.boot182.model.Anak;
 import com.xsis.boot182.model.Orang;
+import com.xsis.boot182.model.OrangViewModel;
 
 @Service
 @Transactional
 public class OrangServiceImpl implements OrangService {
-	@Autowired
-	private OrangDao orangDao;
+	@Autowired private OrangDao orangDao;
+	@Autowired private AnakDao anakDao;
 
 	@Override
 	public List<Orang> getList() {
@@ -40,4 +43,14 @@ public class OrangServiceImpl implements OrangService {
 		this.orangDao.update(orang);
 	}
 
+	@Override
+	public void insert(OrangViewModel orangViewModel) {
+		this.insert(orangViewModel.getOrangTua());
+		if (orangViewModel.getAnak()!=null) {
+			for (Anak a : orangViewModel.getAnak()) {
+				a.setIdOrangTua(orangViewModel.getOrangTua().getId());
+				this.anakDao.insert(a);
+			}
+		}
+	}
 }

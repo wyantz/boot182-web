@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xsis.boot182.model.Orang;
+import com.xsis.boot182.model.OrangViewModel;
 import com.xsis.boot182.service.OrangService;
 
 @Controller
-@RequestMapping("/api")
 public class OrangController {
 	private Log log = LogFactory.getLog(getClass());
 	
@@ -30,20 +30,20 @@ public class OrangController {
 		return "orang/orang";
 	}
 	
-	@RequestMapping(value="/orang/", method=RequestMethod.POST)
-	public ResponseEntity<Orang> save(@RequestBody Orang org) {
-		ResponseEntity<Orang> result = null;
+	@RequestMapping(value="/api/orang/", method=RequestMethod.POST)
+	public ResponseEntity<OrangViewModel> save(@RequestBody OrangViewModel org) {
+		ResponseEntity<OrangViewModel> result = null;
 		try {
 			this.orangService.insert(org);
-			result = new ResponseEntity<>(org, HttpStatus.CREATED);
+			result = new ResponseEntity<OrangViewModel>(org, HttpStatus.CREATED);
 		} catch (Exception e) {
 			log.debug(e.getMessage(), e);
-			result = new ResponseEntity<Orang>(HttpStatus.INTERNAL_SERVER_ERROR);
+			result = new ResponseEntity<OrangViewModel>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return result;
 	}
 	
-	@RequestMapping(value="/orang/", method=RequestMethod.GET)
+	@RequestMapping(value="/api/orang/", method=RequestMethod.GET)
 	public ResponseEntity<List<Orang>> getAll() {
 		ResponseEntity<List<Orang>> result = null;
 		try {
@@ -56,7 +56,7 @@ public class OrangController {
 		return result;
 	}
 
-	@RequestMapping(value="/orang/abc/{namayangdicari}", method=RequestMethod.GET)
+	@RequestMapping(value="/api/orang/abc/{namayangdicari}", method=RequestMethod.GET)
 	public ResponseEntity<List<Orang>> getByNama(@PathVariable("namayangdicari") String nama) {
 		log.debug("Pencarian by nama");
 		ResponseEntity<List<Orang>> result = null;
@@ -70,7 +70,7 @@ public class OrangController {
 		return result;
 	}
 
-	@RequestMapping(value="/orang/{idnyaorang}", method=RequestMethod.GET)
+	@RequestMapping(value="/api/orang/{idnyaorang}", method=RequestMethod.GET)
 	public ResponseEntity<Orang> get(@PathVariable(name="idnyaorang") Integer id) {
 		ResponseEntity<Orang> result = null;
 		try {
@@ -83,7 +83,7 @@ public class OrangController {
 		return result;
 	}
 	
-	@RequestMapping(value="/orang/", method=RequestMethod.PUT)
+	@RequestMapping(value="/api/orang/", method=RequestMethod.PUT)
 	public ResponseEntity<Orang> update(@RequestBody Orang orang) {
 		ResponseEntity<Orang> result = null;
 		try {
@@ -96,7 +96,7 @@ public class OrangController {
 		return result;		
 	}
 
-	@RequestMapping(value="/orang/{idnyaorang}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/api/orang/{idnyaorang}", method=RequestMethod.DELETE)
 	public ResponseEntity<Orang> hapus(@PathVariable(name="idnyaorang") Integer id) {
 		try {
 			Orang orang = this.orangService.getData(id);

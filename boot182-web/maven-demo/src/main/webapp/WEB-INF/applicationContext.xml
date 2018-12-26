@@ -38,6 +38,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.xsis.boot182.model.Orang</value>
+				<value>com.xsis.boot182.model.Anak</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

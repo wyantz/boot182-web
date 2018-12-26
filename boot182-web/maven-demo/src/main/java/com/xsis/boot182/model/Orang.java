@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Orang {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ORGID")
 	private Integer id;
 	
 	@Column(name="ORGNM", length=50)

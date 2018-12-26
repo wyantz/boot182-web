@@ -9,44 +9,45 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.xsis.boot182.dao.OrangDao;
-import com.xsis.boot182.model.Orang;
+import com.xsis.boot182.dao.AnakDao;
+import com.xsis.boot182.model.Anak;
 
 @Repository
-public class OrangDaoImpl implements OrangDao {
+public class AnakDaoImpl implements AnakDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public Orang get(Integer id) {
+	public Anak get(Integer id) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(Orang.class, id);
+		return session.get(Anak.class, id);
 	}
 
 	@Override
-	public void insert(Orang orang) {
+	public void insert(Anak anak) {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(orang);
+		session.save(anak);
 	}
 
 	@Override
-	public void delete(Orang orang) {
+	public void update(Anak anak) {
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(orang);
+		session.update(anak);
 	}
 
 	@Override
-	public void update(Orang orang) {
+	public void delete(Anak anak) {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(orang);
+		session.delete(anak);
 	}
 
 	@Override
-	public List<Orang> getList() {
+	public List<Anak> listAnakByOrangTua(Integer idOrangTua) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "select o from Orang o";
+		String hql = "select a from Anak a where a.idOrangTua = :idnyaorangtua";
 		Query query = session.createQuery(hql);
-		
+		query.setParameter("idnyaorangtua", idOrangTua);
+
 		return query.getResultList();
 	}
 
